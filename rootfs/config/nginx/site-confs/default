@@ -15,6 +15,12 @@ server {
       include /config/nginx/proxy.conf;
       proxy_pass http://cboard:80;
   }
+
+  gzip on;
+  gzip_proxied any;
+  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+  gzip_vary on;
+  gzip_disable "MSIE [1-6]\.(?!.*SV1)";
 }
 
 include /config/nginx/proxy-confs/*.subdomain.conf;
